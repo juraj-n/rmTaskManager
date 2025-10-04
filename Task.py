@@ -7,7 +7,7 @@ class Progress(Enum):
 
 class Task:
     def __init__(self, acronym, description, date, time, progress = Progress.NOT_DONE):
-        self.acronym = acronym.upper().ljust(3)[:3]
+        self.acronym = acronym.upper().ljust(3, '#')[:3]
         self.description = description
         self.date = date
         self.time = time
