@@ -1,19 +1,17 @@
 from enum import Enum, auto
 
-class Progress(Enum):
-    DONE = auto(),
-    IN_PROGRESS = auto(),
-    NOT_DONE = auto()
+class Status(Enum):
+    DONE = "done",
+    IN_PROGRESS = "in_progress",
+    TO_DO = "todo"
 
 class Task:
-    def __init__(self, acronym, description, date, time, progress = Progress.NOT_DONE):
-        self.acronym = acronym.upper().ljust(3, '#')[:3]
-        self.description = description
-        self.date = date
-        self.time = time
-        self.progress = progress
+    def __init__(self, id, description, created_at, updated_at, status = Status.TO_DO):
+        self.id = id,
+        self.description = description,
+        self.created_at = created_at,
+        self.updated_at = updated_at,
+        self.status = status
 
     def print_task(self):
-        print(f"{self.acronym} - {self.description}")
-        print(f"{self.date}; {self.time}")
-        print(f"{self.progress.name}")
+        print(f"{self.description} - {self.status}")
